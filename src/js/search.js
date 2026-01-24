@@ -1,25 +1,38 @@
-import ProductData from "./ProductData.mjs";
-
 const productList = document.querySelector("#product-list");
 const params = new URLSearchParams(window.location.search);
-const query = params.get("q");
+const query = params.get("q")?.toLowerCase();
 
-const dataSource = new ProductData("tents"); // search tents category
+const files = [
+  "/src/json/tents.json",
+  "/src/json/backpacks.json",
+  "/src/json/sleeping-bags.json"
+];
 
 async function loadProducts() {
-  if (!query || !productList) return;
+  if (!query) {
+    productList.innerHTML = "<p>Please enter a search term.</p>";
+    return;
+  }
 
-  const products = await dataSource.getData();
+  try {
+    const responses = await Promise.all(
+      files.map((file) => fetch(file).then((res) => res.json()))
+    );
 
-  const filtered = products.filter((product) =>
-    product.name.toLowerCase().includes(query.toLowerCase()) ||
-    product.description.toLowerCase().includes(query.toLowerCase())
-  );
+    const allProducts = responses.flatMap((data) => data.Result || []);
 
-  displayProducts(filtered);
+    const matches = allProducts.filter((product) =>
+      product.Name.toLowerCase().includes(query)
+    );
+
+    renderProducts(matches);
+  } catch (error) {
+    productList.innerHTML = "<p>Error loading products.</p>";
+    console.error(error);
+  }
 }
 
-function displayProducts(products) {
+function renderProducts(products) {
   if (products.length === 0) {
     productList.innerHTML = "<p>No products found.</p>";
     return;
@@ -29,12 +42,14 @@ function displayProducts(products) {
     .map(
       (product) => `
       <li class="product-card">
-        <a href="/product_pages/${product.id}.html">
-          <img src="${product.image}" alt="${product.name}" />
-          <h3>${product.brand}</h3>
-          <h2>${product.name}</h2>
-          <p>$${product.price}</p>
-        </a>
+        <img
+          src="${product.Images.PrimaryMedium}"
+          alt="${product.Name}"
+          loading="lazy"
+        />
+        <h3>${product.Brand.Name}</h3>
+        <h2>${product.Name}</h2>
+        <p>$${product.FinalPrice}</p>
       </li>
     `
     )
