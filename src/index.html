@@ -4,25 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Home</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/src/css/style.css" />
   </head>
 
   <body>
     <header class="divider">
       <div class="logo">
-        <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
+        <img src="/src/images/noun_Tent_2517.svg" alt="tent image for logo" />
         <a href="index.html"> Sleep<span class="highlight">Outside</span></a>
       </div>
       
       <!-- Product Search -->
   <form id="search-form" class="search-form">
     <input
-      type="search"
-      id="search-input"
-      placeholder="Search products"
-      aria-label="Search products"
+  type="search"
+  id="search-input"
+  name="q"
+  placeholder="Search products"
+  aria-label="Search products"
+  required
+/>
+    <button type="submit" aria-label="Search">
+  <svg
+    class="search-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"
     />
-    <button type="submit">Search</button>
+  </svg>
+</button>
+
   </form>
 
       <div class="cart">
@@ -56,12 +70,12 @@
     <main class="divider">
       <div class="hero">
         <img
-          src="/images/banner-sm.jpg"
+          src="/src/images/banner-sm.jpg"
           srcset="images/banner-sm.jpg 500w, images/banner.jpg"
           alt="image of a high mountain lake"
         />
         <div class="logo logo--square">
-          <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
+          <img src="/src/images/noun_Tent_2517.svg" alt="tent image for logo" />
           <div>Sleep<span class="highlight">Outside</span></div>
         </div>
         <div class="mission">
@@ -76,7 +90,7 @@
         <h2>Top Products</h2>
         <ul class="product-list">
           <li class="product-card">
-            <a href="product_pages/marmot-ajax-3.html">
+            <a href="/product_pages/marmot-ajax-3.html">
               <img
                 src="images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg"
                 alt="Marmot Ajax tent"
@@ -87,7 +101,7 @@
             </a>
           </li>
           <li class="product-card">
-            <a href="product_pages/northface-talus-4.html">
+            <a href="/src/product_pages/northface-talus-4.html">
               <img
                 src="images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg"
                 alt="Talus Tent - 4-Person, 3-Season"
@@ -98,7 +112,7 @@
             </a>
           </li>
           <li class="product-card">
-            <a href="product_pages/northface-alpine-3.html">
+            <a href="/src/product_pages/northface-alpine-guide-3.html">
               <img
                 src="images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg"
                 alt="Alpine Guide Tent - 3-Person, 4-Season"
@@ -109,7 +123,7 @@
             </a>
           </li>
           <li class="product-card">
-            <a href="product_pages/cedar-ridge-rimrock-2.html">
+            <a href="/src/product_pages/cedar-ridge-rimrock-2.html">
               <img
                 src="images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg"
                 alt="Rimrock Tent - 2-Person, 3-Season"
@@ -126,5 +140,8 @@
       &copy;2025 ⛺ SleepOutside ⛺ WDD 330 ⛺ BYU-Idaho for BYU-Pathway
       Worldwide Online
     </footer>
+
+    <script src="/src/js/search.js" type="module"></script>
+
   </body>
 </html>
