@@ -194,6 +194,7 @@ button {
 /* End product list card */
 
 .product-detail {
+  position: relative;
   padding: 1em;
   max-width: 500px;
   margin: auto;
@@ -283,13 +284,18 @@ footer {
 }
 
 .discount-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
   background-color: #c62828;
   color: #ffffff;
-  padding: 4px 8px;
+  padding: 6px 10px;
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: bold;
+  z-index: 10;
 }
+
 
 .search-form {
   display: flex;
