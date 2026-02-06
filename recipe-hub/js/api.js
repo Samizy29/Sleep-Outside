@@ -1,4 +1,4 @@
-const API_KEY = 'PASTE_YOUR_SPOONACULAR_KEY_HERE';
+const API_KEY = '308b006aec1d4f58abaea69d51936305';
 const BASE_URL = 'https://api.spoonacular.com/recipes';
 
 export async function fetchRecipes(ingredients) {
